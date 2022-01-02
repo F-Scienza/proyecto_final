@@ -1,0 +1,73 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form{
+    width: 260px;
+    height: 350px;
+    border-radius: 6px;
+    box-shadow: 0 0 20px -5px;
+    margin: 15px auto;
+    padding: 10px 35px;
+}
+input{
+    width: 100%;
+    padding: 5px;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    border-bottom: 2px solid rgba(0,0, 0, .2) ;
+}
+input:focus{
+    border-bottom: 2px solid rgba(0,0, 0, .4);
+}
+button{
+    padding: 5px 15px;
+    width: 100%;
+    background-color: rgba(0,0, 0, .1);
+    color: black;
+    transition: all .6s;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+button:hover{
+    color: white;
+    background-color: rgba(0,0, 0, 1);
+}
+.prod-table{
+    width: 260px;
+    height: 350px;
+    border-radius: 6px;
+    padding: 10px;
+    overflow: scroll;
+}
+.head-table{
+    width: 260px;
+    height: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px -5px;
+}
+.prod-table-container{
+    height: 300px;
+    overflow-y: scroll;
+    box-shadow: 0 0 20px -5px;
+}
+.chat{
+    width: 450px;
+    height: 160px;
+    margin-right: 0;
+    box-shadow: 0 0 20px -5px;
+}

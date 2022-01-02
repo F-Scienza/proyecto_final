@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>desafio 6</title>
+		<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<h1>Desafio Coderhouse</h1>
+		<div class="container">
+			<div>
+				<h2>Complete el formulario para cargar productos</h2>
+				<form
+					class="form"
+					onsubmit="submitForm(event)"
+				>
+					<p>Nombre de producto</p>
+					<input id="title" name="title" placeholder="Titulo" /> <br />
+					<p>Precio</p>
+					<input id="price" name="price" type="number" placeholder="Precio" /> <br />
+					<p>Inserte una imagen</p>
+					<input id="thumbnail" name="thumbnail" type="file" /> <br />
+					<br /><button type="submit">ENVIAR!</button>
+				</form>
+			</div>
+			<div class="list">
+				<table class="prod-table head-table">
+					<tr>
+						<th>Titulo</th>
+						<th>Precio</th>
+						<th>Imagen</th>
+					</tr>
+				</table>
+				<div class="prod-table-container">
+					<table  class="prod-table" id="live-products">
+					</table>
+				</div>
+				<a href="/productList">Ver lista de productos</a>	
+			</div>
+		</div>
+		<div>
+			<h2>Centro de mensajes</h2>
+			<br/>
+			<div class="chat" id="chat">
+			</div>
+			<br/>
+			<form onsubmit="sendMessage(event)">
+				<input type="text" id="user"  placeholder="ejemplo@domain.com" required/><br/>
+				<input type="text" id="msg" placeholder="Ingrese su mensaje" /><br/>
+				<input type="submit" id="btn" value="Enviar!"/><br/>
+			</form>
+			<br/>    
+		</div>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/main.js"></script>
+	</body>
+</html>

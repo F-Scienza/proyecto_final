@@ -1,0 +1,33 @@
+
+[
+	{
+		"title": "arroz",
+		"price": 70,
+		"thumbnail": "https://previews.123rf.com/images/pedphoto36pm/pedphoto36pm2005/pedphoto36pm200500061/147097525-arroz-jazm%C3%ADn-tailand%C3%A9s-en-un-taz%C3%B3n-sobre-la-mesa-de-madera.jpg",
+		"id": 1
+	},
+	{
+		"title": "fideos",
+		"price": 90,
+		"thumbnail": "https://previews.123rf.com/images/zaki31072017/zaki310720172005/zaki31072017200506128/148084526-dise%C3%B1o-de-plantilla-de-ilustraci%C3%B3n-de-vector-de-icono-de-fideos-de-moda.jpg",
+		"id": 2
+	},
+	{
+		"title": "galletas",
+		"price": 200,
+		"thumbnail": "https://previews.123rf.com/images/hstrongart/hstrongart1707/hstrongart170700023/81958700-dise%C3%B1o-de-paquetes-de-queso-saltines-caja-de-papel-con-bolsa-de-galletas-de-pl%C3%A1stico-en-la-ilustraci.jpg",
+		"id": 3
+	},
+	{
+		"title": "gaseosa",
+		"price": 150,
+		"thumbnail": "https://previews.123rf.com/images/maxxyustas/maxxyustas1910/maxxyustas191000050/133197177-refresco-de-aluminio-rojo-o-lata-de-cerveza-con-gotas-sobre-negro.jpg?fj=1",
+		"id": 4
+	},
+	{
+		"title": "papel de cocina",
+		"price": 100,
+		"thumbnail": "https://previews.123rf.com/images/jojojojo/jojojojo0810/jojojojo081000012/3661614-rollo-de-toalla-de-papel-sobre-la-mesa.jpg",
+		"id": 5
+	}
+]
