@@ -62,6 +62,10 @@ app.get('/productList', (req, res) => {
 	});
 });
 
+app.get('/cart', (req, res)=>{
+	return res.render('cart.ejs')
+})
+
 /////////////////////////////////////////////////////
 // 	Router productos
 const routerProd = Router();
@@ -105,7 +109,6 @@ routerCart.delete("/:id", (req,res)=>{
     cart.write()
     return deleted
 })
-
 routerCart.get("/:id/productos", (req,res)=>{
     let id = req.params.id
     return res.json(cart.find(id).productos)
