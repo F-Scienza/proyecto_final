@@ -4,9 +4,9 @@ const Cart = require('./cart')
 const multer = require('multer');
 const path = require('path')
 const http = require('http');
-const { Router } = express;
-const cart = Router()
 
+const routerCart = require('./routers/cart.router')
+const routerProd = require('./routers/cart.router')
 
 /////////////////////////////////////////////////////
 // express server
@@ -34,13 +34,18 @@ productos.init();
 //	inicializamos carrito
 const carrito = new Cart(__dirname + 'data/cart.json')
 carrito.init()
-
 /////////////////////////////////////////////////////
 // mensaje de bienvenida
 const msg = new Contenedor(__dirname + '/data/messages.json')
 msg.init()
 const messages = []
-/////////////////////////////////////////////////////
+const now = new Date().toLocaleTimeString()
+const welcomeMsg = {
+	"user":"Admin","message":"Bienvenido","date": now
+}
+msg.addProduct(welcomeMsg)
+///////////////////
+//////////////////////////////////
 // seteamos el file con multer
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -61,83 +66,20 @@ app.get('/productList', (req, res) => {
 		productos: productos.productList,
 	});
 });
-
 app.get('/cart', (req, res)=>{
 	return res.render('cart.ejs')
 })
 
 /////////////////////////////////////////////////////
 // 	Router productos
-const routerProd = Router();
-routerProd.get('/', (req, res) => {
-	return res.json(productos.productList);
-});
-routerProd.get('/:id', async (req, res) => {
-	let id = req.params.id; //leemos lo que pasó por url el usuario
-	return res.json(await productos.getById(id));
-});
-
-//	usamos multer para guardar las imagenes
-routerProd.post('/', upload.single('thumbnail'), async (req, res) => {
-	let obj = req.body;
-	obj.thumbnail = '/files/' + req.file.filename;
-	await productos.addProduct(obj); // usamos el metodo save
-	return res.redirect('/productList'); //redireccionamos a lista
-});
-
-routerProd.put('/:id', (req, res) => {
-	let obj = req.body;
-	let id = req.params.id;
-	return res.json(productos.update(id, obj));
-});
 app.use('/api/productos/', routerProd);
-
 // 	Router carrito
-const routerCart = Router()
-routerCart.get("/", (req,res)=>{
-	return res.json(cart.list)
-})
-routerCart.post("/", (req,res)=>{
-	let obj = req.body
-	let saveCart = res.json(cart.save(obj))
-	cart.write()
-	return saveCart
-})
-routerCart.delete("/:id", (req,res)=>{
-	let id = req.params.id
-    let deleted = res.json(cart.delete(id))
-    cart.write()
-    return deleted
-})
-routerCart.get("/:id/productos", (req,res)=>{
-    let id = req.params.id
-    return res.json(cart.find(id).productos)
-})
-routerCart.post("/:id/productos", (req,res)=>{
-	let obj = req.body
-    let id = req.params.id
-    let post = res.json(cart.cartInsert(id,obj))
-    cart.write()
-    return post
-})
-routerCart.delete("/:id/productos", (req,res)=>{
-	let idCart = req.params.id
-    let idProd = req.params.idprod
-    let deleted = res.json(cart.cartDelete(idCart, idProd))
-    cart.write()
-    return(deleted)
-})
-
 app.use('/api/carrito', routerCart)
-
 /////////////////////////////////////////////////////
 // web sockets
-
 const io = require('socket.io');
 const wsServer = io(httpServer);
-
 let users = [];
-
 wsServer.on('connection', (socket) => {
 	users.push(socket);
 	console.log('Usuario conectado. Total: ' + users.length)
